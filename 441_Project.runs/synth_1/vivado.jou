@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Thu Feb 14 10:03:27 2019
+# Process ID: 8692
+# Current directory: M:/Documents/441/441_Project/441_Project.runs/synth_1
+# Command line: vivado.exe -log Reg_bank.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Reg_bank.tcl
+# Log file: M:/Documents/441/441_Project/441_Project.runs/synth_1/Reg_bank.vds
+# Journal file: M:/Documents/441/441_Project/441_Project.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Reg_bank.tcl -notrace

@@ -43,6 +43,7 @@ ARCHITECTURE behave of Controller_tb IS
     SIGNAL r_x_out  : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL r_y_out  : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL r_z_out  : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SIGNAL r_s_out  : STD_LOGIC_VECTOR(1 DOWNTO 0);
     
     COMPONENT Controller IS
       PORT ( clk        : in STD_LOGIC;
@@ -50,19 +51,21 @@ ARCHITECTURE behave of Controller_tb IS
              data_rdy   : in STD_LOGIC;
              x_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
              y_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-             z_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0)
+             z_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+             state_out  : out STD_LOGIC_VECTOR(1 DOWNTO 0) 
              );
     END COMPONENT Controller;
     
 BEGIN
     UUT : Controller
         PORT MAP(
-           clk      => r_clock,
-           data_rdy => r_button,
-           data_in  => r_in,
-           x_out    => r_x_out,
-           y_out    => r_y_out,
-           z_out    => r_z_out
+           clk          => r_clock,
+           data_rdy     => r_button,
+           data_in      => r_in,
+           x_out        => r_x_out,
+           y_out        => r_y_out,
+           z_out        => r_z_out,
+           state_out    => r_s_out
            );
            
    p_clock_gen : PROCESS IS
@@ -74,18 +77,21 @@ BEGIN
    PROCESS
    BEGIN
       r_in     <= x"0001";
-      r_button <= '1';
       wait for 50 ns;
+      r_button <= '1';
+      wait for 500 ns;
       r_button <= '0';
       wait for 50 ns;
       
       r_in     <= x"0010";
+      wait for 50 ns;
       r_button <= '1';
       wait for 50 ns;
       r_button <= '0';
       wait for 50 ns;
        
       r_in     <= x"0011";
+      wait for 50 ns;
       r_button <= '1';
       wait for 50 ns;
       r_button <= '0';

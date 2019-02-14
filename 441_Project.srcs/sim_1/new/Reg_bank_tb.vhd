@@ -83,6 +83,7 @@ BEGIN
         r_write <= '1';
                
         r_x_in    <= x"1111";
+        r_y_in    <= x"1111";
         wait for 100 ns;
         r_y_in    <= x"1111";
         wait for 100 ns;
