@@ -2,7 +2,11 @@
 2017.4
 Dec 15 2017
 21:07:18
-M:/Documents/441/441_Project/441_Project.srcs/sim_1/new/Controller_tb.vhd,1550176734,vhdl,,,,controller_tb,,,,,,,,
-M:/Documents/441/441_Project/441_Project.srcs/sim_1/new/Reg_bank_tb.vhd,1550177262,vhdl,,,,reg_bank_tb,,,,,,,,
-M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/Controller.vhd,1550176296,vhdl,,,,controller,,,,,,,,
-M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/Reg_bank.vhd,1550171587,vhdl,,,,reg_bank,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sim_1/new/CORDIC_tb.vhd,1551309750,vhdl,,,,cordic_tb,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sim_1/new/Controller_tb.vhd,1551307984,vhdl,,,,controller_tb,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sim_1/new/Reg_bank_tb.vhd,1551308386,vhdl,,,,reg_bank_tb,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/CORDIC.vhd,1551309689,vhdl,,,,cordic,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/Controller.vhd,1551309033,vhdl,M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/CORDIC.vhd,,,controller,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/Debouncer.vhd,1551303426,vhdl,M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/CORDIC.vhd,,,debouncer,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/LED.vhd,1551307321,vhdl,M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/CORDIC.vhd,,,led,,,,,,,,
+M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/Reg_bank.vhd,1551306625,vhdl,M:/Documents/441/441_Project/441_Project.srcs/sources_1/new/CORDIC.vhd,,,reg_bank,,,,,,,,

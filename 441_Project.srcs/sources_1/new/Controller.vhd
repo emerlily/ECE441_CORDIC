@@ -32,46 +32,53 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 ENTITY Controller IS
-  PORT ( clk        : in STD_LOGIC;
-         data_in    : in STD_LOGIC_VECTOR(15 DOWNTO 0);
-         data_rdy   : in STD_LOGIC;
-         x_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-         y_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-         z_out      : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-         state_out  : out STD_LOGIC_VECTOR(1 DOWNTO 0)
+  PORT ( clk            : in STD_LOGIC;
+         data_in        : in STD_LOGIC_VECTOR(15 DOWNTO 0);
+         data_button    : in STD_LOGIC;
+         write_out      : out STD_LOGIC;
+         x_out          : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+         y_out          : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+         z_out          : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+         state_out      : out INTEGER
         );
 END Controller;
 
 ARCHITECTURE behave of Controller IS
-    SIGNAL w        : STD_LOGIC;
-    SIGNAL trig     : STD_LOGIC;
-    SIGNAL state    : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
+    SIGNAL trig     : STD_LOGIC := '0';
+    SIGNAL state    : INTEGER   := 0;
+    SIGNAL w        : STD_LOGIC := '0';
 
 BEGIN
-    p_get_inputs: PROCESS(clk, data_rdy) IS
+    p_get_inputs: PROCESS(clk, data_button) IS
     BEGIN
         IF RISING_EDGE(clk) THEN
-            IF data_rdy = '1' THEN
-                IF state = "00" THEN -- 00 is get input for x
+            IF data_button = '1' THEN
+                IF state = 0 THEN       -- 0 is get input for x
                     x_out <= data_in;
-                ELSIF state = "01" THEN -- 01 is get input for y
+                ELSIF state = 1 THEN    -- 1 is get input for y
                     y_out <= data_in;
-                ELSIF state = "10" THEN -- 10 is get input for z
+                ELSIF state = 2 THEN    -- 2 is get input for z
                     z_out <= data_in;
+                    w <= '1';   -- write out to reg_bank
                 END IF;
-                w <= '1';
-                trig <= '1';
-            ELSIF data_rdy = '0' and trig = '1' THEN
-                IF state = "00" THEN
-                    state <= "01";
-                ELSIF state = "01" THEN
-                    state <= "10";
-                ELSIF state = "10" THEN
-                    state <= "11";
+                trig <= '1';            -- button triggered
+                
+            ELSIF data_button = '0' and trig = '1' THEN -- only change states when button released
+                IF state = 0 THEN
+                    state <= 1;
+                ELSIF state = 1 THEN
+                    state <= 2;
+                ELSIF state = 2 THEN
+                    state <= 0;
+                    w <= '0';   -- disable writing
                 END IF;
-                trig <= '0';
+                trig <= '0';            -- button no longer triggered
+                
             END IF;
         END IF;      
     END PROCESS p_get_inputs;
+    
     state_out <= state;
+    write_out <= w;
+    
 END behave;

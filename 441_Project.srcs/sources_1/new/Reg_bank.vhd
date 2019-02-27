@@ -43,13 +43,13 @@ ENTITY Reg_bank IS
            );
 END Reg_bank;
 
-ARCHITECTURE behave of Reg_bank IS
+ARCHITECTURE behave OF Reg_bank IS
     SIGNAL x_reg    : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL y_reg    : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL z_reg    : STD_LOGIC_VECTOR(15 DOWNTO 0);
     
 BEGIN
-    p1: PROCESS(clk) IS
+    p1: PROCESS(clk, write) IS
     BEGIN
         IF RISING_EDGE(clk) AND write = '1' THEN
             x_reg <= x_data_in;

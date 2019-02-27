@@ -80,14 +80,17 @@ BEGIN
     
     PROCESS
     BEGIN
-        r_write <= '1';
-               
+                      
         r_x_in    <= x"1111";
         r_y_in    <= x"1111";
         wait for 100 ns;
-        r_y_in    <= x"1111";
+        r_write <= '1';
+        wait for 100 ns;
+        r_write <= '0';
         wait for 100 ns;
         r_z_in    <= x"1111";
+        r_write <= '1';
+        wait for 100 ns;
         wait for 1 sec;
     END PROCESS;
 
